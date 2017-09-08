@@ -1,0 +1,56 @@
+<md-card fxLayout="column" fxFlex class="signUp-Card" flex>
+  <md-card-header fxLayoutAlign="space-around center">
+    <md-card-title>
+      <h3>Sign Up</h3>
+    </md-card-title>
+    <!-- <md-card-subtitle>Subtitle</md-card-subtitle> -->
+  </md-card-header>
+  <!-- <img mdCardImage src="Card wide image source"> -->
+  <md-card-content>
+    <form>
+      <div fxFlex fxLayout="column">
+        <div fxLayout="row">
+          <md-form-field fxFlex="50">
+            <input mdInput type="text" placeholder="First Name" value="">
+          </md-form-field>
+          <md-form-field fxFlex="50">
+            <input mdInput type="text" placeholder="Last Name" value="">
+          </md-form-field>
+        </div>
+        <md-form-field>
+          <span mdPrefix>+91 &nbsp;</span>
+          <input type="tel" mdInput placeholder="Mobile Number" [formControl]="mobileFormControl" maxlength="10">
+          <md-icon mdSuffix>mode_edit</md-icon>
+          <md-error *ngIf="mobileFormControl.hasError('pattern')">
+            Please enter a valid Mobile Number
+          </md-error>
+          <md-error *ngIf="mobileFormControl.hasError('required')">
+            Mobile Number is <strong>REQUIRED</strong>
+          </md-error>
+        </md-form-field>
+
+        <!-- <input mdInput type="email" placeholder="Email Address" value=""> -->
+        <md-form-field>
+          <input mdInput placeholder="Email Address" [formControl]="emailFormControl">
+          <md-error *ngIf="emailFormControl.hasError('pattern')">
+            Please enter a valid Email Address
+          </md-error>
+          <md-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>REQUIRED</strong>
+          </md-error>
+        </md-form-field>
+        <md-form-field>
+          <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+          <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+          <md-datepicker touchUi="true" #picker></md-datepicker>
+        </md-form-field>
+      </div>
+    </form>
+  </md-card-content>
+  <md-card-footer fxLayoutAlign="center">
+    <!-- <md-card-actions align="start|end"> -->
+    <button md-button (click)="signUp">SIGN UP</button>
+
+    <!-- </md-card-actions> -->
+  </md-card-footer>
+</md-card>

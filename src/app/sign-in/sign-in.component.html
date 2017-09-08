@@ -1,0 +1,38 @@
+<md-card fxLayout="column" fxFlex class="signUp-Card" flex>
+  <md-card-header fxLayoutAlign="space-around center">
+    <md-card-title>
+      <h3>Sign In</h3>
+    </md-card-title>
+    <!-- <md-card-subtitle>Subtitle</md-card-subtitle> -->
+  </md-card-header>
+  <md-card-content>
+    <form>
+      <div fxFlex fxLayout="column">
+        <div>
+            <md-form-field>
+                <input mdInput type="email" placeholder="Email Address" [formControl]="emailFormControl">
+                <md-error *ngIf="emailFormControl.hasError('pattern')">
+                  Please enter a valid Email Address
+                </md-error>
+                <md-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>REQUIRED</strong>
+                </md-error>
+              </md-form-field>
+              <md-form-field>
+                <input mdInput type="password" placeholder="Password" [formControl]="passwordFormControl" #message maxlength="10">
+                <md-hint align="start"><strong>Password Required</strong> </md-hint>
+                <md-error *ngIf="passwordFormControl.hasError('required')">
+                    enter correct <strong>PASSWORD</strong>
+                  </md-error>
+              </md-form-field>
+        </div>
+      </div>
+    </form>
+  </md-card-content>
+  <md-card-footer fxLayoutAlign="center">
+    <!-- <md-card-actions align="start|end"> -->
+    <button md-button (click)="signIn">SIGN IN</button>
+
+    <!-- </md-card-actions> -->
+  </md-card-footer>
+</md-card>
