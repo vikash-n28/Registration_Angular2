@@ -1,25 +1,65 @@
 <md-card fxLayout="column" fxFlex class="signUp-Card" flex>
   <md-card-header fxLayoutAlign="space-around center">
     <md-card-title>
-      <h3>Sign Up</h3>
+      <h3>SIGN UP</h3>
     </md-card-title>
     <!-- <md-card-subtitle>Subtitle</md-card-subtitle> -->
   </md-card-header>
   <!-- <img mdCardImage src="Card wide image source"> -->
   <md-card-content>
-    <form>
+    <form name="userForm" #userForm="ngForm">
       <div fxFlex fxLayout="column">
         <div fxLayout="row">
-          <md-form-field fxFlex="50">
-            <input mdInput type="text" placeholder="First Name" value="">
+          <md-form-field fxFlex="50" color="primary" [hideRequiredMarker]="true">
+            <input mdInput
+                   class="form-control" 
+                   name="firstName" 
+                   placeholder="First Name" 
+                   [(ngModel)]="userForm.firstName"
+                    
+                   required>
           </md-form-field>
-          <md-form-field fxFlex="50">
-            <input mdInput type="text" placeholder="Last Name" value="">
+          <md-form-field fxFlex="50" color="accent" [hideRequiredMarker]="true">
+            <input mdInput 
+                   class="form-control"
+                   name="lastName" 
+                   placeholder="Last Name" 
+                   [(ngModel)]="userForm.lastName" 
+                   md-no-asterisk
+                   required>
           </md-form-field>
         </div>
-        <md-form-field>
+        <div fxLayout="row">
+        <md-form-field color="warn" [hideRequiredMarker]="true">
+          <input mdInput 
+                 class="form-control"
+                 name="username" 
+                 placeholder="User Name" 
+                 [(ngModel)]="userForm.username" 
+                 required>
+          <md-hint align="start"><strong>Unique User Name</strong> </md-hint>
+        </md-form-field>
+        <md-form-field color="warn" [hideRequiredMarker]="true">
+          <input mdInput 
+                 class="form-control"
+                 [(ngModel)]="userForm.password" 
+                 name="password" 
+                 placeholder="Password" 
+                 required>
+          <md-hint align="start"><strong>Provide Unique Password</strong> </md-hint>
+        </md-form-field>
+      </div>
+        <md-form-field color="warn" [hideRequiredMarker]="true">
           <span mdPrefix>+91 &nbsp;</span>
-          <input type="tel" mdInput placeholder="Mobile Number" [formControl]="mobileFormControl" maxlength="10">
+          <input mdInput 
+                 class="form-control"
+                 type="tel"  
+                 name="mobileNumber" 
+                 placeholder="Mobile Number" 
+                 [formControl]="mobileFormControl"
+                 [(ngModel)]="userForm.mobileNumber" 
+                 maxlength="10"
+                 required>
           <md-icon mdSuffix>mode_edit</md-icon>
           <md-error *ngIf="mobileFormControl.hasError('pattern')">
             Please enter a valid Mobile Number
@@ -30,8 +70,15 @@
         </md-form-field>
 
         <!-- <input mdInput type="email" placeholder="Email Address" value=""> -->
-        <md-form-field>
-          <input mdInput placeholder="Email Address" [formControl]="emailFormControl">
+        <md-form-field color="warn" [hideRequiredMarker]="true">
+          <input mdInput 
+                 class="form-control"
+                 type="email"
+                 placeholder="Email Address"
+                 name="email"  
+                 [(ngModel)]="userForm.email"
+                 [formControl]="emailFormControl"
+                 required>
           <md-error *ngIf="emailFormControl.hasError('pattern')">
             Please enter a valid Email Address
           </md-error>
@@ -39,8 +86,14 @@
             Email is <strong>REQUIRED</strong>
           </md-error>
         </md-form-field>
-        <md-form-field>
-          <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+        <md-form-field color="warn" [hideRequiredMarker]="true">
+          <input mdInput 
+                 class="form-control"
+                 [mdDatepicker]="picker"  
+                 [(ngModel)]="userForm.dob" 
+                 name="dob" 
+                 placeholder="Date of Birth"
+                 required>
           <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
           <md-datepicker touchUi="true" #picker></md-datepicker>
         </md-form-field>
@@ -49,7 +102,7 @@
   </md-card-content>
   <md-card-footer fxLayoutAlign="center">
     <!-- <md-card-actions align="start|end"> -->
-    <button md-button (click)="signUp">SIGN UP</button>
+    <button md-button (click)="signUp(userForm)">SIGN UP</button>
 
     <!-- </md-card-actions> -->
   </md-card-footer>
