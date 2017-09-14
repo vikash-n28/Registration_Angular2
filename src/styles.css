@@ -1,8 +1,15 @@
 @import url(~@angular/material/prebuilt-themes/indigo-pink.css);
 body {
-  margin: auto; }
+  margin: auto;
+  background-color: blueviolet; }
+
+.frontPage {
+  background-color: pink; }
 
 .container {
   max-height: 100%; }
+
+.input-Prop {
+  width: 400px; }
 
 /*# sourceMappingURL=styles.css.map */

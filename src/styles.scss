@@ -6,13 +6,26 @@
 // @import '~@angular/material/theming';
 // @include mat-core()
 // $font-stack:Helvetica, sans-serif;
+// $flag-icon-css-path: '~assets/font-family/Myriad-Pro-Light-SemiCondensed_31639' !default;
+// @import "~assets/font-family/Myriad-Pro-Light-SemiCondensed_31639";
+// @include font-face(Myriad-Pro,font-family/Myriad-Pro-Light-SemiCondensed_31639);
+// @import url('../assets/font-family/Myriad-Pro-Light-SemiExtended-Italic_31640.ttf=myriad');
 
 
 body{
   // font: 100% $font-stack;
   margin: auto;
+  background-color: blueviolet;
+}
+
+.frontPage{
+  background-color: pink;
 }
   
 .container{
   max-height: 100%;
+}
+
+.input-Prop{
+  width: 400px;
 }
